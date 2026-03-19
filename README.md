@@ -1,6 +1,6 @@
 # Refined Checklist
 
-**MDR Solutions - Version 1.0.1**
+**MDR Solutions - Version 1.0.2**
 
 The **Refined Checklist** extension is a lightweight, highly configurable way to add checklists, "Definition of Done," or task-tracking directly into your Azure DevOps work item forms. It supports custom titles, reorderable items, and "Not Applicable" (N/A) status tracking, making it an essential tool for maintaining high standards and consistency across your projects.
 
@@ -72,12 +72,12 @@ Once the control is on the form, you need to define what items should appear:
 
 ## Documentation
 
-For more information and support, visit the [Refined Checklist GitHub repository](https://github.com/MDRSolutions/Refined-Checklist).
+For more information and support, visit the [Refined Checklist GitHub repository](https://github.com/MDRSolutions/Refined-Checklist-docs).
 
 ## Feedback and Bug Reports
 
 If you encounter any bugs, have questions, or want to suggest a feature:
--   **Issues:** Please open a [new issue](https://github.com/MDRSolutions/Refined-Checklist/issues).
+-   **Issues:** Please open a [new issue](https://github.com/MDRSolutions/Refined-Checklist-docs/issues).
 -   **Discussions:** Feel free to start a discussion for feedback or general inquiries.
 
 ---
