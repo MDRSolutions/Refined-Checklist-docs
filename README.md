@@ -1,14 +1,15 @@
 # Refined Checklist
 
-**MDR Solutions - Version 1.0.2**
+**MDR Solutions - Version 1.0.3**
 
-The **Refined Checklist** extension is a lightweight, highly configurable way to add checklists, "Definition of Done," or task-tracking directly into your Azure DevOps work item forms. It supports custom titles, reorderable items, and "Not Applicable" (N/A) status tracking, making it an essential tool for maintaining high standards and consistency across your projects.
+The **Refined Checklist** extension is a lightweight, highly configurable way to add checklists, "Definition of Done," or task-tracking directly into your Azure DevOps work item forms. It supports multiple named checklists per work item type, custom titles, reorderable items, and "Not Applicable" (N/A) status tracking, making it an essential tool for maintaining high standards and consistency across your projects.
 
 ---
 
 ## Key Features
 
 -   **Configurable Templates:** Define unique checklist items for each Work Item Type (e.g., User Story, Bug, Feature).
+-   **Multiple Checklists:** Create multiple named checklists per work item type (e.g., "Definition of Done," "QA Review," "Security Checklist") shown as independent progress sections.
 -   **Custom Titles:** Label your sections as "Definition of Done," "Acceptance Criteria," or whatever fits your team's workflow.
 -   **Intelligent Progress Tracking:** Monitor completion with a dynamic progress bar that turns green upon 100% completion.
 -   **Reorderable Items:** Organize your checklist tasks in the exact sequence they should be performed.
@@ -64,20 +65,21 @@ Once the control is on the form, you need to define what items should appear:
 1.  Navigate to your **Project Settings**.
 2.  In the left sidebar, under the **Extensions** (or General) category, click **Checklist Configuration**.
 3.  Select the **Work Item Type** you wish to configure.
-4.  Set a **Section Title** (e.g., "Definition of Done").
-5.  Add your checklist items. Use the **Up/Down** arrows to reorder them.
-6.  Click **Save Configuration**.
+4.  **Add one or more named checklists:** Click **Add Checklist** and enter a name (e.g., "Definition of Done," "QA Review").
+5.  Click on a checklist to select it, then add its items using the **Add** button.
+6.  Use the **Up/Down** arrows to reorder items within a checklist. Click the **×** on a checklist pill to delete it.
+7.  Click **Save Configuration**.
 
 ---
 
 ## Documentation
 
-For more information and support, visit the [Refined Checklist GitHub repository](https://github.com/MDRSolutions/Refined-Checklist-docs).
+For more information and support, visit the [Refined Checklist GitHub repository](https://github.com/MDRSolutions/Refined-Checklist).
 
 ## Feedback and Bug Reports
 
 If you encounter any bugs, have questions, or want to suggest a feature:
--   **Issues:** Please open a [new issue](https://github.com/MDRSolutions/Refined-Checklist-docs/issues).
+-   **Issues:** Please open a [new issue](https://github.com/MDRSolutions/Refined-Checklist/issues).
 -   **Discussions:** Feel free to start a discussion for feedback or general inquiries.
 
 ---
