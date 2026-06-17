@@ -1,6 +1,6 @@
 # Refined Checklist
 
-**MDR Solutions - Version 1.0.3**
+**MDR Solutions - Version 1.0.4**
 
 The **Refined Checklist** extension is a lightweight, highly configurable way to add checklists, "Definition of Done," or task-tracking directly into your Azure DevOps work item forms. It supports multiple named checklists per work item type, custom titles, reorderable items, and "Not Applicable" (N/A) status tracking, making it an essential tool for maintaining high standards and consistency across your projects.
 
@@ -10,6 +10,7 @@ The **Refined Checklist** extension is a lightweight, highly configurable way to
 
 -   **Configurable Templates:** Define unique checklist items for each Work Item Type (e.g., User Story, Bug, Feature).
 -   **Multiple Checklists:** Create multiple named checklists per work item type (e.g., "Definition of Done," "QA Review," "Security Checklist") shown as independent progress sections.
+-   **Team-Specific Checklists:** Assign checklists to teams, restrict visibility to team members only, and checklists are grouped by team on work items.
 -   **Custom Titles:** Label your sections as "Definition of Done," "Acceptance Criteria," or whatever fits your team's workflow.
 -   **Intelligent Progress Tracking:** Monitor completion with a dynamic progress bar that turns green upon 100% completion.
 -   **Reorderable Items:** Organize your checklist tasks in the exact sequence they should be performed.
@@ -66,9 +67,13 @@ Once the control is on the form, you need to define what items should appear:
 2.  In the left sidebar, under the **Extensions** (or General) category, click **Checklist Configuration**.
 3.  Select the **Work Item Type** you wish to configure.
 4.  **Add one or more named checklists:** Click **Add Checklist** and enter a name (e.g., "Definition of Done," "QA Review").
-5.  Click on a checklist to select it, then add its items using the **Add** button.
-6.  Use the **Up/Down** arrows to reorder items within a checklist. Click the **×** on a checklist pill to delete it.
-7.  Click **Save Configuration**.
+5.  Click on a checklist to select it, then edit its properties:
+    - **Checklist Name:** Rename the checklist.
+    - **Team:** Assign the checklist to a team (or keep it project-wide).
+    - **Visible only to members:** Restrict visibility to team members only (team-assigned checklists only).
+6.  Add items using the **Add** button. Use the **Up/Down** arrows to reorder items.
+7.  Click **×** on a checklist pill to delete it.
+8.  Click **Save Configuration**.
 
 ---
 
