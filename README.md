@@ -1,6 +1,6 @@
 # Refined Checklist
 
-**MDR Solutions - Version 1.0.5**
+**MDR Solutions - Version 1.0.6**
 
 The **Refined Checklist** extension is a lightweight, highly configurable way to add checklists, "Definition of Done," or task-tracking directly into your Azure DevOps work item forms. It supports multiple named checklists per work item type, custom titles, reorderable items, and "Not Applicable" (N/A) status tracking, making it an essential tool for maintaining high standards and consistency across your projects.
 
@@ -9,8 +9,11 @@ The **Refined Checklist** extension is a lightweight, highly configurable way to
 ## Key Features
 
 -   **Configurable Templates:** Define unique checklist items for each Work Item Type (e.g., User Story, Bug, Feature).
+-   **State Transition Gates:** Prevent work items from transitioning to specific states when required checklist items are incomplete.
 -   **Multiple Checklists:** Create multiple named checklists per work item type (e.g., "Definition of Done," "QA Review," "Security Checklist") shown as independent progress sections.
 -   **Team-Specific Checklists:** Assign checklists to teams, restrict visibility to team members only, and checklists are grouped by team on work items.
+-   **Item Assignment:** Assign checklist items to team members via @mention with notifications.
+-   **Guidance Text:** Add Markdown guidance text above each checklist, displayed on the work item form to provide context or instructions.
 -   **Custom Titles:** Label your sections as "Definition of Done," "Acceptance Criteria," or whatever fits your team's workflow.
 -   **Intelligent Progress Tracking:** Monitor completion with a dynamic progress bar that turns green upon 100% completion.
 -   **Reorderable Items:** Organize your checklist tasks in the exact sequence they should be performed.
@@ -19,7 +22,13 @@ The **Refined Checklist** extension is a lightweight, highly configurable way to
 
 ---
 
-## 🛠️ Setup and Configuration
+## Known Limitations
+
+-   **Board Drag-and-Drop Bypasses State Gates:** State transition gates are only enforced when a work item's state is changed through the **state dropdown** on the work item form. If a state is changed by **dragging and dropping** a card on a board (Kanban or sprint board), the gate check is bypassed and the transition will proceed without verifying checklist completion.
+
+---
+
+## Setup and Configuration
 
 ### 1. Installation
 
@@ -71,6 +80,8 @@ Once the control is on the form, you need to define what items should appear:
     - **Checklist Name:** Rename the checklist.
     - **Team:** Assign the checklist to a team (or keep it project-wide).
     - **Visible only to members:** Restrict visibility to team members only (team-assigned checklists only).
+    - **Enable assignments:** Toggle item assignment (@mention) for this checklist.
+    - **Guidance text:** Optional Markdown text displayed above the checklist items on the work item form.
 6.  Add items using the **Add** button. Use the **Up/Down** arrows to reorder items.
 7.  Click **×** on a checklist pill to delete it.
 8.  Click **Save Configuration**.
