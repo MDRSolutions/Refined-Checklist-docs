@@ -88,10 +88,6 @@ Once the control is on the form, you need to define what items should appear:
 
 ---
 
-## Documentation
-
-For more information and support, visit the [Refined Checklist GitHub repository](https://github.com/MDRSolutions/Refined-Checklist).
-
 ## Feedback and Bug Reports
 
 If you encounter any bugs, have questions, or want to suggest a feature:
