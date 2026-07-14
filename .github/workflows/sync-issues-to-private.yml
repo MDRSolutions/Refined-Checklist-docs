@@ -15,6 +15,12 @@ name: Sync new issue to private repo
 on:
   issues:
     types: [opened]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 'Issue number in the docs repo to mirror'
+        required: true
+        type: string
 
 # Adjust these two values for your repos
 env:
