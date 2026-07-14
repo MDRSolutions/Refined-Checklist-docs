@@ -92,7 +92,7 @@ Once the control is on the form, you need to define what items should appear:
 ## Feedback and Bug Reports
 
 If you encounter any bugs, have questions, or want to suggest a feature:
--   **Issues:** Please open a [new issue](https://github.com/MDRSolutions/Refined-Checklist/issues).
+-   **Issues:** Please open a [new issue](https://github.com/MDRSolutions/Refined-Checklist-docs/issues).
 -   **Discussions:** Feel free to start a discussion for feedback or general inquiries.
 
 ---
