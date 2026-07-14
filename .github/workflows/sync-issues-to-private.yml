@@ -18,8 +18,8 @@ on:
 
 # Adjust these two values for your repos
 env:
-  PRIVATE_OWNER: mdr-solutions-org   # org/user that owns the private repo
-  PRIVATE_REPO: refined-checklist    # private repo name
+  PRIVATE_OWNER: MDRSolutions   # org/user that owns the private repo
+  PRIVATE_REPO: Refined-Checklist    # private repo name
 
 jobs:
   mirror-issue:
