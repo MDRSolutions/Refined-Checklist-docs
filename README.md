@@ -72,6 +72,8 @@ To see the checklist on your work items, you must add the control to your work i
 
 ### 3. Template Configuration
 
+<a id="template-configuration"></a>
+
 Once the control is on the form, you need to define what items should appear:
 
 1.  Navigate to your **Project Settings**.
@@ -79,15 +81,31 @@ Once the control is on the form, you need to define what items should appear:
 3.  Select a **Work Item Type** from the auto-expanded tree view.
 4.  **Add one or more named checklists:** Click **Add Checklist** and enter a name (e.g., "Definition of Done," "QA Review").
 5.  Click on a checklist to select it, then edit its properties:
-    - **Checklist Name:** Rename the checklist.
-    - **Team:** Assign the checklist to a team (or keep it project-wide).
-    - **Visible only to members:** Restrict visibility to team members only (team-assigned checklists only).
-    - **Enable assignments:** Toggle item assignment (@mention) for this checklist.
-    - **Guidance text:** Optional Markdown text displayed above the checklist items on the work item form.
-    - **Completion Field:** Map this checklist's completion status to a boolean field on the work item type. When all items are complete, the field is set to `true`; otherwise `false`. Each field can only be assigned to one checklist.
+    - **Checklist Name:** <a id="checklist-name"></a>Rename the checklist.
+    - **Team:** <a id="team-assignment"></a>Assign the checklist to a team (or keep it project-wide).
+    - **Visible only to members:** <a id="team-restriction"></a>Restrict visibility to team members only (team-assigned checklists only).
+    - **Enable assignments:** <a id="item-assignments"></a>Toggle item assignment (@mention) for this checklist.
+    - **Guidance text:** <a id="guidance-text"></a>Optional Markdown text displayed above the checklist items on the work item form.
+    - **Completion Field:** <a id="completion-field"></a>Map this checklist's completion status to a boolean field on the work item type. When all items are complete, the field is set to `true`; otherwise `false`. Each field can only be assigned to one checklist.
 6.  Add items using the **Add** button. Click any item's text to rename it directly. Use the **Up/Down** arrows to reorder items.
 7.  Click **×** on a checklist pill to delete it.
 8.  Click **Save Configuration**.
+
+---
+
+### 3a. State Transition Gates
+
+<a id="state-transition-gates"></a>
+
+State transition gates allow you to require checklist completion before a work item can move to a specific state.
+
+1.  In the **Checklist Configuration** page, scroll down to the **State transition gates** section.
+2.  Each state of the work item type is listed with checkboxes for all configured checklists.
+3.  Check the box next to a checklist for a given state to require that checklist to be completed before the work item can transition to that state.
+4.  If no checklists are selected for a state, no gate is enforced for that transition.
+5.  Click **Save Configuration**.
+
+> **Note:** State transition gates are only enforced when the state is changed through the **state dropdown** on the work item form. State changes made by dragging cards on boards, bulk editing, or the REST API bypass these gates. For enforcement across all surfaces, see [Integration with Azure DevOps Process Rules](#4-integration-with-azure-devops-process-rules) below.
 
 ---
 
@@ -115,6 +133,8 @@ The **Completion Field Mapping** feature bridges this gap by keeping a boolean f
 3.  Import the updated XML back into your project collection.
 
 #### B. Map the field to a checklist
+
+<a id="completion-field-mapping"></a>
 
 1.  Open **Project Settings** > **Checklist Configuration** and select the work item type.
 2.  Click on the checklist you want to map.
