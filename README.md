@@ -86,7 +86,7 @@ Once the control is on the form, you need to define what items should appear:
     - **Visible only to members:** <a id="team-restriction"></a>Restrict visibility to team members only (team-assigned checklists only).
     - **Enable assignments:** <a id="item-assignments"></a>Toggle item assignment (@mention) for this checklist.
     - **Guidance text:** <a id="guidance-text"></a>Optional Markdown text displayed above the checklist items on the work item form.
-    - **Completion Field:** <a id="completion-field"></a>Map this checklist's completion status to a boolean field on the work item type. When all items are complete, the field is set to `true`; otherwise `false`. Each field can only be assigned to one checklist.
+    - **Completion Field:** <a id="completion-field"></a>Map this checklist's completion status to a boolean field on the work item type. When all items are complete, the field is set to `true`; otherwise `false`. Each field can only be assigned to one checklist. System-prefixed boolean fields (e.g., `System.IsClosed`) are automatically excluded from the dropdown.
 6.  Add items using the **Add** button. Click any item's text to rename it directly. Use the **Up/Down** arrows to reorder items.
 7.  Click **×** on a checklist pill to delete it.
 8.  Click **Save Configuration**.
@@ -138,7 +138,7 @@ The **Completion Field Mapping** feature bridges this gap by keeping a boolean f
 
 1.  Open **Project Settings** > **Checklist Configuration** and select the work item type.
 2.  Click on the checklist you want to map.
-3.  In the **Completion Field** dropdown, select the boolean field you created.
+3.  In the **Completion Field** dropdown, select the boolean field you created. Only custom boolean fields appear in the dropdown; system-prefixed fields are excluded.
 4.  Click **Save Configuration**.
 
 The field is updated in real time as users check and uncheck checklist items.
