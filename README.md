@@ -1,6 +1,6 @@
 # Refined Checklist
 
-**MDR Solutions - Version 1.0.8**
+**MDR Solutions - Version 1.0.9**
 
 The **Refined Checklist** extension is a lightweight, highly configurable way to add checklists, "Definition of Done," or task-tracking directly into your Azure DevOps work item forms. It supports multiple named checklists per work item type, custom titles, reorderable items, and "Not Applicable" (N/A) status tracking, making it an essential tool for maintaining high standards and consistency across your projects.
 
@@ -10,6 +10,7 @@ The **Refined Checklist** extension is a lightweight, highly configurable way to
 
 -   **Configurable Templates:** Define unique checklist items for each Work Item Type (e.g., User Story, Bug, Feature).
 -   **State Transition Gates:** Prevent work items from transitioning to specific states when required checklist items are incomplete.
+-   **Completion Field Mapping:** Sync checklist completion status to a boolean field on the work item, enabling Azure DevOps process rules to enforce checklist completion on state transitions from any surface (boards, bulk edit, REST API).
 -   **Multiple Checklists:** Create multiple named checklists per work item type (e.g., "Definition of Done," "QA Review," "Security Checklist") shown as independent progress sections.
 -   **Team-Specific Checklists:** Assign checklists to teams, restrict visibility to team members only, and checklists are grouped by team on work items.
 -   **Item Assignment:** Assign checklist items to team members via @mention with notifications.
@@ -25,7 +26,7 @@ The **Refined Checklist** extension is a lightweight, highly configurable way to
 
 ## Known Limitations
 
--   **Board Drag-and-Drop Bypasses State Gates:** State transition gates are only enforced when a work item's state is changed through the **state dropdown** on the work item form. If a state is changed by **dragging and dropping** a card on a board (Kanban or sprint board), the gate check is bypassed and the transition will proceed without verifying checklist completion.
+-   **Board Drag-and-Drop Bypasses State Gates:** State transition gates are only enforced when a work item's state is changed through the **state dropdown** on the work item form. If a state is changed by **dragging and dropping** a card on a board (Kanban or sprint board), the gate check is bypassed and the transition will proceed without verifying checklist completion. **Workaround:** Use [Completion Field Mapping](#4-integration-with-azure-devops-process-rules) in combination with Azure DevOps process rules to enforce checklist completion from any state change surface.
 
 ---
 
@@ -83,9 +84,58 @@ Once the control is on the form, you need to define what items should appear:
     - **Visible only to members:** Restrict visibility to team members only (team-assigned checklists only).
     - **Enable assignments:** Toggle item assignment (@mention) for this checklist.
     - **Guidance text:** Optional Markdown text displayed above the checklist items on the work item form.
+    - **Completion Field:** Map this checklist's completion status to a boolean field on the work item type. When all items are complete, the field is set to `true`; otherwise `false`. Each field can only be assigned to one checklist.
 6.  Add items using the **Add** button. Click any item's text to rename it directly. Use the **Up/Down** arrows to reorder items.
 7.  Click **×** on a checklist pill to delete it.
 8.  Click **Save Configuration**.
+
+---
+
+### 4. Integration with Azure DevOps Process Rules
+
+The built-in **State Transition Gates** (step 3 above) only enforce checklist completion when the state is changed through the **state dropdown** on the work item form. State changes made by **dragging cards on boards**, **bulk editing**, or the **REST API** bypass these gates.
+
+The **Completion Field Mapping** feature bridges this gap by keeping a boolean field on the work item in sync with each checklist's completion status. You can then use Azure DevOps process rules to enforce checklist completion regardless of how the state change is triggered.
+
+#### A. Create a boolean field on the work item type
+
+##### Inherited Process Model
+1.  Navigate to **Organization Settings** > **Boards** > **Process**.
+2.  Select your inherited process and choose the **Work Item Type** (e.g., *User Story*).
+3.  Click the **New Field** button.
+4.  Enter a **Name** (e.g., "Code Review Complete") and set the **Type** to **Boolean**.
+5.  Click **Add Field**.
+
+##### XML Process Model
+1.  Export the Work Item Type XML using `witadmin`.
+2.  Add a `<FIELD>` element inside `<FIELDS>`:
+    ```xml
+    <FIELD name="Code Review Complete" type="Boolean" />
+    ```
+3.  Import the updated XML back into your project collection.
+
+#### B. Map the field to a checklist
+
+1.  Open **Project Settings** > **Checklist Configuration** and select the work item type.
+2.  Click on the checklist you want to map.
+3.  In the **Completion Field** dropdown, select the boolean field you created.
+4.  Click **Save Configuration**.
+
+The field is updated in real time as users check and uncheck checklist items.
+
+#### C. Create a process rule
+
+1.  Navigate to **Organization Settings** > **Boards** > **Process**.
+2.  Select your inherited process and choose the **Work Item Type**.
+3.  Click **Rules** > **New Rule**.
+4.  Set the **When** condition to the state transition you want to guard (e.g., *State changed to Done*).
+5.  Add a **Condition**: your boolean field **equals** `False`.
+6.  Set the **Action** to **Block save** with a message (e.g., "Complete the checklist before moving to Done.").
+7.  Click **Save Rule**.
+
+This prevents the state transition when the checklist is incomplete, regardless of whether the change is made from the work item form, a board, bulk edit, or the REST API.
+
+> **Note:** Each boolean field can only be mapped to one checklist. If you have multiple checklists, create a separate boolean field for each and configure a rule for each one.
 
 ---
 
