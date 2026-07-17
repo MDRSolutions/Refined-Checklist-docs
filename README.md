@@ -14,6 +14,7 @@ The **Refined Checklist** extension is a lightweight, highly configurable way to
 -   **Multiple Checklists:** Create multiple named checklists per work item type (e.g., "Definition of Done," "QA Review," "Security Checklist") shown as independent progress sections.
 -   **Team-Specific Checklists:** Assign checklists to teams, restrict visibility to team members only, and checklists are grouped by team on work items.
 -   **Item Assignment:** Assign checklist items to team members via @mention with notifications.
+-   **Assignee-Only Completion:** Optionally restrict item completion to the assigned user, with fine-grained controls for unassigned items and unmark permissions.
 -   **Guidance Text:** Add Markdown guidance text above each checklist, displayed on the work item form to provide context or instructions.
 -   **Tree View Selector:** Navigate work item types and their configured checklists in an auto-expanded tree view within the settings hub, with one-click access to any type or checklist.
 -   **Custom Titles:** Label your sections as "Definition of Done," "Acceptance Criteria," or whatever fits your team's workflow.
@@ -85,6 +86,9 @@ Once the control is on the form, you need to define what items should appear:
     - **Team:** <a id="team-assignment"></a>Assign the checklist to a team (or keep it project-wide).
     - **Visible only to members:** <a id="team-restriction"></a>Restrict visibility to team members only (team-assigned checklists only).
     - **Enable assignments:** <a id="item-assignments"></a>Toggle item assignment (@mention) for this checklist.
+    - **Only assignee can complete item:** <a id="assignee-only-completion"></a>When assignments are enabled, restrict item completion to the user assigned to that item. Only the assignee can check or uncheck assigned items.
+    - **Allow checking unassigned items:** <a id="allow-check-unassigned"></a>When assignee-only completion is enabled, this controls whether users can still check items that have no assignee. When disabled, unassigned items cannot be completed.
+    - **Allow anyone to unmark item:** <a id="allow-anyone-to-unmark"></a>When assignee-only completion is enabled, this allows any user to unmark a completed item even if they are not the assignee. Useful for corrections while still restricting initial completions.
     - **Guidance text:** <a id="guidance-text"></a>Optional Markdown text displayed above the checklist items on the work item form.
     - **Completion Field:** <a id="completion-field"></a>Map this checklist's completion status to a boolean field on the work item type. When all items are complete, the field is set to `true`; otherwise `false`. Each field can only be assigned to one checklist. System-prefixed boolean fields (e.g., `System.IsClosed`) are automatically excluded from the dropdown.
 6.  Add items using the **Add** button. Click any item's text to rename it directly. Use the **Up/Down** arrows to reorder items.
