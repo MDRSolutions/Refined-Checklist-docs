@@ -1,6 +1,6 @@
 # Refined Checklist
 
-**MDR Solutions - Version 1.0.10**
+**MDR Solutions - Version 1.0.11**
 
 The **Refined Checklist** extension is a lightweight, highly configurable way to add checklists, "Definition of Done," or task-tracking directly into your Azure DevOps work item forms. It supports multiple named checklists per work item type, custom titles, reorderable items, and "Not Applicable" (N/A) status tracking, making it an essential tool for maintaining high standards and consistency across your projects.
 
@@ -8,7 +8,7 @@ The **Refined Checklist** extension is a lightweight, highly configurable way to
 
 ## Key Features
 
--   **Configurable Templates:** Define unique checklist items for each Work Item Type (e.g., User Story, Bug, Feature).
+-   **Configurable Templates:** Define unique checklist items for each Work Item Type (e.g., User Story, Bug, Feature). Only active work item types from your process are shown — system and disabled types are filtered out.
 -   **State Transition Gates:** Prevent work items from transitioning to specific states when required checklist items are incomplete.
 -   **Completion Field Mapping:** Sync checklist completion status to a boolean field on the work item, enabling Azure DevOps process rules to enforce checklist completion on state transitions from any surface (boards, bulk edit, REST API).
 -   **Multiple Checklists:** Create multiple named checklists per work item type (e.g., "Definition of Done," "QA Review," "Security Checklist") shown as independent progress sections.
@@ -78,7 +78,7 @@ Once the control is on the form, you need to define what items should appear:
 
 1.  Navigate to your **Project Settings**.
 2.  In the left sidebar, under the **Extensions** (or General) category, click **Checklist Configuration**.
-3.  Select a **Work Item Type** from the auto-expanded tree view.
+3.  Select a **Work Item Type** from the auto-expanded tree view. Only active work item types from your process are shown — internal system types and disabled types are automatically filtered out.
 4.  **Add one or more named checklists:** Click **Add Checklist** and enter a name (e.g., "Definition of Done," "QA Review").
 5.  Click on a checklist to select it, then edit its properties:
     - **Checklist Name:** <a id="checklist-name"></a>Rename the checklist.
