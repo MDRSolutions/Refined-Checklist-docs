@@ -13,6 +13,7 @@ The **Refined Checklist** extension is a lightweight, highly configurable way to
 -   **Completion Field Mapping:** Sync checklist completion status to a boolean field on the work item, enabling Azure DevOps process rules to enforce checklist completion on state transitions from any surface (boards, bulk edit, REST API).
 -   **Multiple Checklists:** Create multiple named checklists per work item type (e.g., "Definition of Done," "QA Review," "Security Checklist") shown as independent progress sections.
 -   **Team-Specific Checklists:** Assign checklists to teams, restrict visibility to team members only, and checklists are grouped by team on work items.
+-   **State-Based Visibility:** Restrict checklists to specific work item states so they only appear when relevant, reducing clutter on forms.
 -   **Item Assignment:** Assign checklist items to team members via @mention with notifications.
 -   **Assignee-Only Completion:** Optionally restrict item completion to the assigned user, with fine-grained controls for unassigned items and unmark permissions.
 -   **Guidance Text:** Add Markdown guidance text above each checklist, displayed on the work item form to provide context or instructions.
@@ -85,6 +86,7 @@ Once the control is on the form, you need to define what items should appear:
     - **Checklist Name:** <a id="checklist-name"></a>Rename the checklist.
     - **Team:** <a id="team-assignment"></a>Assign the checklist to a team (or keep it project-wide).
     - **Visible only to members:** <a id="team-restriction"></a>Restrict visibility to team members only (team-assigned checklists only).
+    - **Visible States:** <a id="visible-states"></a>Restrict the checklist to specific work item states. When states are selected, the checklist is only shown when the work item is in one of those states. Leave all states unchecked to show the checklist in all states (the default).
     - **Enable assignments:** <a id="item-assignments"></a>Toggle item assignment (@mention) for this checklist.
     - **Only assignee can complete item:** <a id="assignee-only-completion"></a>When assignments are enabled, restrict item completion to the user assigned to that item. Only the assignee can check or uncheck assigned items.
     - **Allow checking unassigned items:** <a id="allow-check-unassigned"></a>When assignee-only completion is enabled, this controls whether users can still check items that have no assignee. When disabled, unassigned items cannot be completed.
@@ -110,6 +112,8 @@ State transition gates allow you to require checklist completion before a work i
 5.  Click **Save Configuration**.
 
 > **Note:** State transition gates are only enforced when the state is changed through the **state dropdown** on the work item form. State changes made by dragging cards on boards, bulk editing, or the REST API bypass these gates. For enforcement across all surfaces, see [Integration with Azure DevOps Process Rules](#4-integration-with-azure-devops-process-rules) below.
+
+> **Warning:** If a checklist is gated on a state but its [Visible States](#visible-states) setting excludes that state, users will be unable to complete the gate. The configuration page displays a warning when this conflict is detected.
 
 > **Choosing an approach:** You can enforce checklist completion using *either* the extension's built-in state transition gates (step 3a above) *or* Azure DevOps process rules with completion field mapping (step 4 below). There is no benefit to using both — the process rules approach already provides broader coverage across boards, bulk edit, and the REST API. If you only need enforcement on the work item form, the built-in gates are simpler to set up.
 
