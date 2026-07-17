@@ -107,6 +107,8 @@ State transition gates allow you to require checklist completion before a work i
 
 > **Note:** State transition gates are only enforced when the state is changed through the **state dropdown** on the work item form. State changes made by dragging cards on boards, bulk editing, or the REST API bypass these gates. For enforcement across all surfaces, see [Integration with Azure DevOps Process Rules](#4-integration-with-azure-devops-process-rules) below.
 
+> **Choosing an approach:** You can enforce checklist completion using *either* the extension's built-in state transition gates (step 3a above) *or* Azure DevOps process rules with completion field mapping (step 4 below). There is no benefit to using both — the process rules approach already provides broader coverage across boards, bulk edit, and the REST API. If you only need enforcement on the work item form, the built-in gates are simpler to set up.
+
 ---
 
 ### 4. Integration with Azure DevOps Process Rules
@@ -131,6 +133,8 @@ The **Completion Field Mapping** feature bridges this gap by keeping a boolean f
     <FIELD name="Code Review Complete" type="Boolean" />
     ```
 3.  Import the updated XML back into your project collection.
+
+> **Important:** The boolean field you create will be actively managed by the extension — it is set to `true` or `false` in real time as checklist items are completed. Do not use this field for any other purpose, and do not set its value manually. The field does not need to be visible on the work item form; it only needs to exist so the extension can update it and process rules can evaluate it. Only use custom boolean fields — system fields (e.g., `System.BoardColumnDone`) are excluded by the extension and writing to them could interfere with Azure DevOps behavior.
 
 #### B. Map the field to a checklist
 
