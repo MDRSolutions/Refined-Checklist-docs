@@ -1,6 +1,6 @@
 # Refined Checklist
 
-**MDR Solutions - Version 1.0.10**
+**MDR Solutions - Version 1.0.11**
 
 The **Refined Checklist** extension is a lightweight, highly configurable way to add checklists, "Definition of Done," or task-tracking directly into your Azure DevOps work item forms. It supports multiple named checklists per work item type, custom titles, reorderable items, and "Not Applicable" (N/A) status tracking, making it an essential tool for maintaining high standards and consistency across your projects.
 
@@ -8,18 +8,22 @@ The **Refined Checklist** extension is a lightweight, highly configurable way to
 
 ## Key Features
 
--   **Configurable Templates:** Define unique checklist items for each Work Item Type (e.g., User Story, Bug, Feature).
+-   **Configurable Templates:** Define unique checklist items for each Work Item Type (e.g., User Story, Bug, Feature). Only active work item types from your process are shown — system and disabled types are filtered out.
 -   **State Transition Gates:** Prevent work items from transitioning to specific states when required checklist items are incomplete.
 -   **Completion Field Mapping:** Sync checklist completion status to a boolean field on the work item, enabling Azure DevOps process rules to enforce checklist completion on state transitions from any surface (boards, bulk edit, REST API).
 -   **Multiple Checklists:** Create multiple named checklists per work item type (e.g., "Definition of Done," "QA Review," "Security Checklist") shown as independent progress sections.
 -   **Team-Specific Checklists:** Assign checklists to teams, restrict visibility to team members only, and checklists are grouped by team on work items.
+-   **State-Based Visibility:** Restrict checklists to specific work item states so they only appear when relevant, reducing clutter on forms.
+-   **Field-Based Disable Conditions:** Hide checklists based on drop-down field values. When a work item's field matches configured values, the checklist is hidden and does not block state transitions.
 -   **Item Assignment:** Assign checklist items to team members via @mention with notifications.
+-   **Assignee-Only Completion:** Optionally restrict item completion to the assigned user, with fine-grained controls for unassigned items and unmark permissions.
 -   **Guidance Text:** Add Markdown guidance text above each checklist, displayed on the work item form to provide context or instructions.
 -   **Tree View Selector:** Navigate work item types and their configured checklists in an auto-expanded tree view within the settings hub, with one-click access to any type or checklist.
 -   **Custom Titles:** Label your sections as "Definition of Done," "Acceptance Criteria," or whatever fits your team's workflow.
 -   **Intelligent Progress Tracking:** Monitor completion with a dynamic progress bar that turns green upon 100% completion.
 -   **Reorderable Items:** Organize your checklist tasks in the exact sequence they should be performed.
 -   **N/A Support:** Mark items as "Not Applicable" (N/A) to handle edge cases without affecting your 100% completion goal.
+-   **N/A Sorting:** Optionally move N/A items to the bottom of the list to reduce clutter. Items return to their original position when reactivated.
 -   **Accountability:** Each check (or N/A) captures the user's name and a timestamp, helping teams stay aligned.
 
 ---
@@ -72,22 +76,75 @@ To see the checklist on your work items, you must add the control to your work i
 
 ### 3. Template Configuration
 
+<a id="template-configuration"></a>
+
 Once the control is on the form, you need to define what items should appear:
 
 1.  Navigate to your **Project Settings**.
 2.  In the left sidebar, under the **Extensions** (or General) category, click **Checklist Configuration**.
-3.  Select a **Work Item Type** from the auto-expanded tree view.
+3.  Select a **Work Item Type** from the auto-expanded tree view. Only active work item types from your process are shown — internal system types and disabled types are automatically filtered out.
 4.  **Add one or more named checklists:** Click **Add Checklist** and enter a name (e.g., "Definition of Done," "QA Review").
 5.  Click on a checklist to select it, then edit its properties:
-    - **Checklist Name:** Rename the checklist.
-    - **Team:** Assign the checklist to a team (or keep it project-wide).
-    - **Visible only to members:** Restrict visibility to team members only (team-assigned checklists only).
-    - **Enable assignments:** Toggle item assignment (@mention) for this checklist.
-    - **Guidance text:** Optional Markdown text displayed above the checklist items on the work item form.
-    - **Completion Field:** Map this checklist's completion status to a boolean field on the work item type. When all items are complete, the field is set to `true`; otherwise `false`. Each field can only be assigned to one checklist.
+    - **Checklist Name:** <a id="checklist-name"></a>Rename the checklist.
+    - **Team:** <a id="team-assignment"></a>Assign the checklist to a team (or keep it project-wide).
+    - **Visible only to members:** <a id="team-restriction"></a>Restrict visibility to team members only (team-assigned checklists only).
+    - **Visible States:** <a id="visible-states"></a>Restrict the checklist to specific work item states. When states are selected, the checklist is only shown when the work item is in one of those states. Leave all states unchecked to show the checklist in all states (the default).
+    - **Enable assignments:** <a id="item-assignments"></a>Toggle item assignment (@mention) for this checklist.
+    - **Only assignee can complete item:** <a id="assignee-only-completion"></a>When assignments are enabled, restrict item completion to the user assigned to that item. Only the assignee can check or uncheck assigned items.
+    - **Allow checking unassigned items:** <a id="allow-check-unassigned"></a>When assignee-only completion is enabled, this controls whether users can still check items that have no assignee. When disabled, unassigned items cannot be completed.
+    - **Allow anyone to unmark item:** <a id="allow-anyone-to-unmark"></a>When assignee-only completion is enabled, this allows any user to unmark a completed item even if they are not the assignee. Useful for corrections while still restricting initial completions.
+    - **Move N/A items to bottom:** <a id="sort-na-items-bottom"></a>When enabled, items marked as N/A are moved to the bottom of the list in the work item form. If an item is reactivated (N/A removed), it returns to its original position. Reduces clutter on checklists with many N/A items.
+    - **Guidance text:** <a id="guidance-text"></a>Optional Markdown text displayed above the checklist items on the work item form.
+    - **Completion Field:** <a id="completion-field"></a>Map this checklist's completion status to a boolean field on the work item type. When all items are complete, the field is set to `true`; otherwise `false`. Each field can only be assigned to one checklist. System-prefixed boolean fields (e.g., `System.IsClosed`) are automatically excluded from the dropdown.
+    - **Disable Conditions:** <a id="disable-conditions"></a>Define drop-down field values that hide this checklist. When a work item's field matches any of the selected values (OR logic), the checklist is hidden and does not block state transitions. Only enforced drop-down fields are shown in the selector. Disabled checklists are completely removed from the form and do not participate in state gate checks.
 6.  Add items using the **Add** button. Click any item's text to rename it directly. Use the **Up/Down** arrows to reorder items.
 7.  Click **×** on a checklist pill to delete it.
 8.  Click **Save Configuration**.
+
+---
+
+### 3a. State Transition Gates
+
+<a id="state-transition-gates"></a>
+
+State transition gates allow you to require checklist completion before a work item can move to a specific state.
+
+1.  In the **Checklist Configuration** page, scroll down to the **State transition gates** section.
+2.  Each state of the work item type is listed with checkboxes for all configured checklists.
+3.  Check the box next to a checklist for a given state to require that checklist to be completed before the work item can transition to that state.
+4.  If no checklists are selected for a state, no gate is enforced for that transition.
+5.  Click **Save Configuration**.
+
+> **Note:** State transition gates are only enforced when the state is changed through the **state dropdown** on the work item form. State changes made by dragging cards on boards, bulk editing, or the REST API bypass these gates. For enforcement across all surfaces, see [Integration with Azure DevOps Process Rules](#4-integration-with-azure-devops-process-rules) below.
+
+> **Warning:** If a checklist is gated on a state but its [Visible States](#visible-states) setting excludes that state, users will be unable to complete the gate. The configuration page displays a warning when this conflict is detected.
+
+> **Choosing an approach:** You can enforce checklist completion using *either* the extension's built-in state transition gates (step 3a above) *or* Azure DevOps process rules with completion field mapping (step 4 below). There is no benefit to using both — the process rules approach already provides broader coverage across boards, bulk edit, and the REST API. If you only need enforcement on the work item form, the built-in gates are simpler to set up.
+
+---
+
+### 3b. Disable Conditions
+
+<a id="disable-conditions-config"></a>
+
+Disable conditions allow you to hide checklists based on the value of a drop-down field on the work item. This is useful when not all checklists are valid for every work item of a given type.
+
+1.  In the **Checklist Configuration** page, select a checklist to edit.
+2.  Scroll down to the **Disable Conditions** section.
+3.  Click **Add Condition**.
+4.  Select a **drop-down field** from the dropdown (only enforced picklist/drop-down fields for the work item type are shown).
+5.  Check the **field values** that should disable the checklist. When the work item's field matches any of the selected values, the checklist is hidden.
+6.  Add multiple conditions to disable the checklist based on different fields. Conditions use **OR logic** — if any condition matches, the checklist is hidden.
+7.  Click **Save Configuration**.
+
+**Behavior of disabled checklists:**
+
+-   The checklist is completely hidden from the work item form — it is as if it does not exist.
+-   Disabled checklists do not block state transitions, even if they are listed as requirements in [State Transition Gates](#state-transition-gates).
+-   Visibility updates in real time when the controlling field value changes on the form.
+-   If the field value changes back, the checklist reappears with its previous completion state intact.
+
+> **Example:** A Bug work item might have a "Severity" drop-down field. You can configure a "Critical Bug Checklist" to only appear when Severity is set to "Critical" or "Blocker", and hide it for all other severity levels.
 
 ---
 
@@ -114,11 +171,15 @@ The **Completion Field Mapping** feature bridges this gap by keeping a boolean f
     ```
 3.  Import the updated XML back into your project collection.
 
+> **Important:** The boolean field you create will be actively managed by the extension — it is set to `true` or `false` in real time as checklist items are completed. Do not use this field for any other purpose, and do not set its value manually. The field does not need to be visible on the work item form; it only needs to exist so the extension can update it and process rules can evaluate it. Only use custom boolean fields — system fields (e.g., `System.BoardColumnDone`) are excluded by the extension and writing to them could interfere with Azure DevOps behavior.
+
 #### B. Map the field to a checklist
+
+<a id="completion-field-mapping"></a>
 
 1.  Open **Project Settings** > **Checklist Configuration** and select the work item type.
 2.  Click on the checklist you want to map.
-3.  In the **Completion Field** dropdown, select the boolean field you created.
+3.  In the **Completion Field** dropdown, select the boolean field you created. Only custom boolean fields appear in the dropdown; system-prefixed fields are excluded.
 4.  Click **Save Configuration**.
 
 The field is updated in real time as users check and uncheck checklist items.
@@ -136,6 +197,12 @@ The field is updated in real time as users check and uncheck checklist items.
 This prevents the state transition when the checklist is incomplete, regardless of whether the change is made from the work item form, a board, bulk edit, or the REST API.
 
 > **Note:** Each boolean field can only be mapped to one checklist. If you have multiple checklists, create a separate boolean field for each and configure a rule for each one.
+
+---
+
+## Changelog
+
+See the [CHANGELOG](CHANGELOG.md) for a full list of changes in each release.
 
 ---
 
