@@ -14,6 +14,7 @@ The **Refined Checklist** extension is a lightweight, highly configurable way to
 -   **Multiple Checklists:** Create multiple named checklists per work item type (e.g., "Definition of Done," "QA Review," "Security Checklist") shown as independent progress sections.
 -   **Team-Specific Checklists:** Assign checklists to teams, restrict visibility to team members only, and checklists are grouped by team on work items.
 -   **State-Based Visibility:** Restrict checklists to specific work item states so they only appear when relevant, reducing clutter on forms.
+-   **Field-Based Disable Conditions:** Hide checklists based on drop-down field values. When a work item's field matches configured values, the checklist is hidden and does not block state transitions.
 -   **Item Assignment:** Assign checklist items to team members via @mention with notifications.
 -   **Assignee-Only Completion:** Optionally restrict item completion to the assigned user, with fine-grained controls for unassigned items and unmark permissions.
 -   **Guidance Text:** Add Markdown guidance text above each checklist, displayed on the work item form to provide context or instructions.
@@ -95,6 +96,7 @@ Once the control is on the form, you need to define what items should appear:
     - **Move N/A items to bottom:** <a id="sort-na-items-bottom"></a>When enabled, items marked as N/A are moved to the bottom of the list in the work item form. If an item is reactivated (N/A removed), it returns to its original position. Reduces clutter on checklists with many N/A items.
     - **Guidance text:** <a id="guidance-text"></a>Optional Markdown text displayed above the checklist items on the work item form.
     - **Completion Field:** <a id="completion-field"></a>Map this checklist's completion status to a boolean field on the work item type. When all items are complete, the field is set to `true`; otherwise `false`. Each field can only be assigned to one checklist. System-prefixed boolean fields (e.g., `System.IsClosed`) are automatically excluded from the dropdown.
+    - **Disable Conditions:** <a id="disable-conditions"></a>Define drop-down field values that hide this checklist. When a work item's field matches any of the selected values (OR logic), the checklist is hidden and does not block state transitions. Only enforced drop-down fields are shown in the selector. Disabled checklists are completely removed from the form and do not participate in state gate checks.
 6.  Add items using the **Add** button. Click any item's text to rename it directly. Use the **Up/Down** arrows to reorder items.
 7.  Click **×** on a checklist pill to delete it.
 8.  Click **Save Configuration**.
@@ -118,6 +120,31 @@ State transition gates allow you to require checklist completion before a work i
 > **Warning:** If a checklist is gated on a state but its [Visible States](#visible-states) setting excludes that state, users will be unable to complete the gate. The configuration page displays a warning when this conflict is detected.
 
 > **Choosing an approach:** You can enforce checklist completion using *either* the extension's built-in state transition gates (step 3a above) *or* Azure DevOps process rules with completion field mapping (step 4 below). There is no benefit to using both — the process rules approach already provides broader coverage across boards, bulk edit, and the REST API. If you only need enforcement on the work item form, the built-in gates are simpler to set up.
+
+---
+
+### 3b. Disable Conditions
+
+<a id="disable-conditions-config"></a>
+
+Disable conditions allow you to hide checklists based on the value of a drop-down field on the work item. This is useful when not all checklists are valid for every work item of a given type.
+
+1.  In the **Checklist Configuration** page, select a checklist to edit.
+2.  Scroll down to the **Disable Conditions** section.
+3.  Click **Add Condition**.
+4.  Select a **drop-down field** from the dropdown (only enforced picklist/drop-down fields for the work item type are shown).
+5.  Check the **field values** that should disable the checklist. When the work item's field matches any of the selected values, the checklist is hidden.
+6.  Add multiple conditions to disable the checklist based on different fields. Conditions use **OR logic** — if any condition matches, the checklist is hidden.
+7.  Click **Save Configuration**.
+
+**Behavior of disabled checklists:**
+
+-   The checklist is completely hidden from the work item form — it is as if it does not exist.
+-   Disabled checklists do not block state transitions, even if they are listed as requirements in [State Transition Gates](#state-transition-gates).
+-   Visibility updates in real time when the controlling field value changes on the form.
+-   If the field value changes back, the checklist reappears with its previous completion state intact.
+
+> **Example:** A Bug work item might have a "Severity" drop-down field. You can configure a "Critical Bug Checklist" to only appear when Severity is set to "Critical" or "Blocker", and hide it for all other severity levels.
 
 ---
 
