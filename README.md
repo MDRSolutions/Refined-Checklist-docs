@@ -200,6 +200,12 @@ This prevents the state transition when the checklist is incomplete, regardless 
 
 ---
 
+## Changelog
+
+See the [CHANGELOG](CHANGELOG.md) for a full list of changes in each release.
+
+---
+
 ## Feedback and Bug Reports
 
 If you encounter any bugs, have questions, or want to suggest a feature:
