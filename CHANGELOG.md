@@ -6,26 +6,36 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+### Added
+
+
+
+## [1.0.12] - 2026-07-23
+
+### Added
+
+- User-defined items — allow users to add, edit, and delete custom checklist items directly from the work item form ([#11](https://github.com/MDRSolutions/Refined-Checklist-docs/issues/11))
+
 ## [1.0.11] - 2026-07-18
 
 ### Added
 
-- Field-based disable conditions — hide checklists based on drop-down field values ([#24](https://github.com/MDRSolutions/Refined-Checklist/issues/24))
-- N/A sorting — move N/A items to the bottom of the list, returning them to their original position when reactivated ([#21](https://github.com/MDRSolutions/Refined-Checklist/issues/21))
-- State-based visibility — restrict checklists to specific work item states so they only appear when relevant ([#22](https://github.com/MDRSolutions/Refined-Checklist/issues/22))
-- Assignee-only completion — optionally restrict item completion to the assigned user, with controls for unassigned items and unmark permissions ([#20](https://github.com/MDRSolutions/Refined-Checklist/issues/20))
-- System and disabled work item types are now filtered from the Select Type list ([#30](https://github.com/MDRSolutions/Refined-Checklist/issues/30))
-- Interactive help tooltips on the settings page ([#26](https://github.com/MDRSolutions/Refined-Checklist/issues/26))
+- Field-based disable conditions — hide checklists based on drop-down field values ([#5](https://github.com/MDRSolutions/Refined-Checklist-docs/issues/5))
+- N/A sorting — move N/A items to the bottom of the list, returning them to their original position when reactivated ([#2](https://github.com/MDRSolutions/Refined-Checklist-docs/issues/2))
+- State-based visibility — restrict checklists to specific work item states so they only appear when relevant ([#3](https://github.com/MDRSolutions/Refined-Checklist-docs/issues/3))
+- Assignee-only completion — optionally restrict item completion to the assigned user, with controls for unassigned items and unmark permissions ([#1](https://github.com/MDRSolutions/Refined-Checklist-docs/issues/1))
+- System and disabled work item types are now filtered from the Select Type list ([#9](https://github.com/MDRSolutions/Refined-Checklist-docs/issues/9))
+- Interactive help tooltips on the settings page ([#6](https://github.com/MDRSolutions/Refined-Checklist-docs/issues/6))
 
 ### Fixed
 
-- Prevent scroll-to-top when clicking hamburger menu ([#35](https://github.com/MDRSolutions/Refined-Checklist/issues/35))
+- Prevent scroll-to-top when clicking hamburger menu
 
 ## [1.0.10] - 2026-07-15
 
 ### Added
 
-- Completion field mapping — sync checklist completion status to a boolean work item field, enabling Azure DevOps process rules to enforce completion from any surface ([#23](https://github.com/MDRSolutions/Refined-Checklist/issues/23))
+- Completion field mapping — sync checklist completion status to a boolean work item field, enabling Azure DevOps process rules to enforce completion from any surface ([#4](https://github.com/MDRSolutions/Refined-Checklist-docs/issues/4))
 - Per-checklist completion fields with duplicate prevention
 - Boolean field dropdown for selecting completion fields (system-prefixed fields excluded)
 
@@ -39,39 +49,39 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ### Added
 
-- Auto-expanded tree view selector for work item types in the settings hub ([#16](https://github.com/MDRSolutions/Refined-Checklist/issues/16))
-- Inline renaming of checklist items in settings ([#13](https://github.com/MDRSolutions/Refined-Checklist/issues/13))
+- Auto-expanded tree view selector for work item types in the settings hub
+- Inline renaming of checklist items in settings
 
 ### Fixed
 
 - Prevent stale checklist flash when switching work item types in tree view
-- Resolve TextField style type error ([#13](https://github.com/MDRSolutions/Refined-Checklist/issues/13))
+- Resolve TextField style type error
 
 ## [1.0.6] - 2026-07-09
 
 ### Added
 
-- Optional guidance/description text field for checklists, displayed as Markdown above checklist items ([#6](https://github.com/MDRSolutions/Refined-Checklist/issues/6))
-- State transition gates — require checklist completion before transitioning to specific states ([#9](https://github.com/MDRSolutions/Refined-Checklist/issues/9))
+- Optional guidance/description text field for checklists, displayed as Markdown above checklist items
+- State transition gates — require checklist completion before transitioning to specific states
 
 ### Fixed
 
-- Guidance text clearing state transition gates ([#12](https://github.com/MDRSolutions/Refined-Checklist/issues/12))
-- Missing remove-item icon in settings ([#4](https://github.com/MDRSolutions/Refined-Checklist/issues/4))
+- Guidance text clearing state transition gates
+- Missing remove-item icon in settings
 
 ## [1.0.5] - 2026-07-04
 
 ### Added
 
-- Checklist item assignment with @mention notification ([#3](https://github.com/MDRSolutions/Refined-Checklist/issues/3))
+- Checklist item assignment with @mention notification
 - Per-checklist toggle for enabling/disabling assignments
-- Prevent closing work items with incomplete required checklists ([#2](https://github.com/MDRSolutions/Refined-Checklist/issues/2))
+- Prevent closing work items with incomplete required checklists
 
 ## [1.0.4] - 2026-06-17
 
 ### Added
 
-- Team-specific checklists — assign checklists to teams and restrict visibility to team members ([#1](https://github.com/MDRSolutions/Refined-Checklist/issues/1))
+- Team-specific checklists — assign checklists to teams and restrict visibility to team members
 
 ## [1.0.3] - 2026-06-15
 
@@ -96,7 +106,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - Progress tracking with dynamic progress bar
 - Per-item accountability with user name and timestamp
 
-[Unreleased]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.11...HEAD
+[Unreleased]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.12...HEAD
+[1.0.12]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.11...v1.0.12
 [1.0.11]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.10...v1.0.11
 [1.0.10]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.9...v1.0.10
 [1.0.9]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.8...v1.0.9
