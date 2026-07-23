@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+## [1.0.13] - 2026-07-23
+
+### Fixed
+
+- Checklist window not resizing when adding user-defined items, causing items to be clipped below the visible area ([#40](https://github.com/MDRSolutions/Refined-Checklist/issues/40))
+
 ## [1.0.12] - 2026-07-23
 
 ### Added
@@ -102,7 +108,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - Progress tracking with dynamic progress bar
 - Per-item accountability with user name and timestamp
 
-[Unreleased]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.12...HEAD
+[Unreleased]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.13...HEAD
+[1.0.13]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.12...v1.0.13
 [1.0.12]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.11...v1.0.12
 [1.0.11]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.10...v1.0.11
 [1.0.10]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.9...v1.0.10
