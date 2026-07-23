@@ -1,6 +1,6 @@
 # Refined Checklist
 
-**MDR Solutions - Version 1.0.11**
+**MDR Solutions - Version 1.0.12**
 
 The **Refined Checklist** extension is a lightweight, highly configurable way to add checklists, "Definition of Done," or task-tracking directly into your Azure DevOps work item forms. It supports multiple named checklists per work item type, custom titles, reorderable items, and "Not Applicable" (N/A) status tracking, making it an essential tool for maintaining high standards and consistency across your projects.
 
@@ -24,6 +24,7 @@ The **Refined Checklist** extension is a lightweight, highly configurable way to
 -   **Reorderable Items:** Organize your checklist tasks in the exact sequence they should be performed.
 -   **N/A Support:** Mark items as "Not Applicable" (N/A) to handle edge cases without affecting your 100% completion goal.
 -   **N/A Sorting:** Optionally move N/A items to the bottom of the list to reduce clutter. Items return to their original position when reactivated.
+-   **User-Defined Items:** Allow users to add, edit, and delete custom checklist items directly from the work item form — per work item, not shared across the template.
 -   **Accountability:** Each check (or N/A) captures the user's name and a timestamp, helping teams stay aligned.
 
 ---
@@ -93,8 +94,9 @@ Once the control is on the form, you need to define what items should appear:
     - **Only assignee can complete item:** <a id="assignee-only-completion"></a>When assignments are enabled, restrict item completion to the user assigned to that item. Only the assignee can check or uncheck assigned items.
     - **Allow checking unassigned items:** <a id="allow-check-unassigned"></a>When assignee-only completion is enabled, this controls whether users can still check items that have no assignee. When disabled, unassigned items cannot be completed.
     - **Allow anyone to unmark item:** <a id="allow-anyone-to-unmark"></a>When assignee-only completion is enabled, this allows any user to unmark a completed item even if they are not the assignee. Useful for corrections while still restricting initial completions.
-    - **Move N/A items to bottom:** <a id="sort-na-items-bottom"></a>When enabled, items marked as N/A are moved to the bottom of the list in the work item form. If an item is reactivated (N/A removed), it returns to its original position. Reduces clutter on checklists with many N/A items.
-    - **Guidance text:** <a id="guidance-text"></a>Optional Markdown text displayed above the checklist items on the work item form.
+    -   **Move N/A items to bottom:** <a id="sort-na-items-bottom"></a>When enabled, items marked as N/A are moved to the bottom of the list in the work item form. If an item is reactivated (N/A removed), it returns to its original position. Reduces clutter on checklists with many N/A items.
+    -   **Allow user-defined items:** <a id="user-defined-items"></a>When enabled, users can add, edit, and delete their own checklist items directly from the work item form. These items are per work item and do not affect the template.
+    -   **Guidance text:** <a id="guidance-text"></a>Optional Markdown text displayed above the checklist items on the work item form.
     - **Completion Field:** <a id="completion-field"></a>Map this checklist's completion status to a boolean field on the work item type. When all items are complete, the field is set to `true`; otherwise `false`. Each field can only be assigned to one checklist. System-prefixed boolean fields (e.g., `System.IsClosed`) are automatically excluded from the dropdown.
     - **Disable Conditions:** <a id="disable-conditions"></a>Define drop-down field values that hide this checklist. When a work item's field matches any of the selected values (OR logic), the checklist is hidden and does not block state transitions. Only enforced drop-down fields are shown in the selector. Disabled checklists are completely removed from the form and do not participate in state gate checks.
 6.  Add items using the **Add** button. Click any item's text to rename it directly. Use the **Up/Down** arrows to reorder items.
