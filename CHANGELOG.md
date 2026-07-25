@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+## [1.0.14] - 2026-07-25
+
+### Fixed
+
+- Completion field no longer forces a save prompt when it changes but is not visible on the work item form 2014 updated via REST API instead of form service ([#42](https://github.com/MDRSolutions/Refined-Checklist/issues/42))
+- Item assignment dropdown is now populated for project-wide checklists ([#44](https://github.com/MDRSolutions/Refined-Checklist/issues/44))
+
 ## [1.0.13] - 2026-07-23
 
 ### Fixed
@@ -108,7 +115,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - Progress tracking with dynamic progress bar
 - Per-item accountability with user name and timestamp
 
-[Unreleased]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.13...HEAD
+[Unreleased]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.14...HEAD
+[1.0.14]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.13...v1.0.14
 [1.0.13]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.12...v1.0.13
 [1.0.12]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.11...v1.0.12
 [1.0.11]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.10...v1.0.11
