@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 ### Fixed
 
 - Completion field no longer forces a save prompt when it changes but is not visible on the work item form — updated via REST API instead of form service ([#42](https://github.com/MDRSolutions/Refined-Checklist/issues/42))
+- Item assignment dropdown is now populated for project-wide checklists ([#44](https://github.com/MDRSolutions/Refined-Checklist/issues/44))
 
 ## [1.0.12] - 2026-07-23
 
