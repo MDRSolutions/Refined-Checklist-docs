@@ -173,6 +173,14 @@ Organization-wide checklists support the same item, guidance, assignment, N/A so
 
 > **Note:** Team visibility, [Visible States](#visible-states), [Completion Field](#completion-field) mapping, and [Disable Conditions](#disable-conditions) are project-specific. These settings are configured per project and are not available for organization-wide checklists.
 
+#### C. Limitations and things to know
+
+-   **Work item types are matched by name across processes.** The organization tree lists the union of work item types from every process in the organization. An organization-wide checklist is keyed on the work item type **name**, so a checklist configured for a type such as `User Story` applies to every project whose process defines a type with that exact name. Types with the same name that differ between processes share the same organization-wide checklist.
+-   **Renaming a work item type breaks its checklists.** Because checklists are matched on the type name, renaming a work item type in the process (for example `User Story` → `Story`) means existing project and organization-wide checklists no longer appear for that type. Reconfigure the checklist for the renamed type.
+-   **Deleting an organization-wide checklist that is gated in a project.** If a project uses an organization-wide checklist in its [State Transition Gates](#state-transition-gates) and that checklist is later deleted at the organization level, the gate can no longer be satisfied. The work item form blocks the transition with a message, and the project's **Checklist Configuration** page flags the stale gate with a **Remove stale references** action. Update the affected projects after deleting a shared checklist.
+-   **On-premises (Azure DevOps Server) type discovery.** In the organization hub, work item types are discovered through the process API. If your server does not support that API, the list may be empty or incomplete; use the **Add work item type by name** box to add the type manually. Enter the name exactly as it appears on the work item form.
+-   **Organization-wide configuration is a shared, organization-scoped resource.** It is stored with the extension's organization-scoped data (the same mechanism and trust model as project checklists), and changes affect every project in the organization.
+
 ---
 
 ### 4. Integration with Azure DevOps Process Rules
