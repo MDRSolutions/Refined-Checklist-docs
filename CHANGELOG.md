@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+### Added
+
+- Organization-wide checklists — define checklists once at the organization level and reuse them across every project. Managed from Organization Settings, with a read-only view in project settings ([#48](https://github.com/MDRSolutions/Refined-Checklist/issues/48))
+
 ## [1.0.15] - 2026-10-17
 
 ### Fixed
