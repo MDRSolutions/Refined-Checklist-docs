@@ -6,11 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+## [1.0.15] - 2026-10-17
+
+### Fixed
+
+- The last checklist on a work item type can now be deleted and saved ([#46](https://github.com/MDRSolutions/Refined-Checklist/issues/46))
+
 ## [1.0.14] - 2026-07-25
 
 ### Fixed
 
-- Completion field no longer forces a save prompt when it changes but is not visible on the work item form 2014 updated via REST API instead of form service ([#42](https://github.com/MDRSolutions/Refined-Checklist/issues/42))
+- Completion field no longer forces a save prompt when it changes but is not visible on the work item form — updated via REST API instead of form service ([#42](https://github.com/MDRSolutions/Refined-Checklist/issues/42))
 - Item assignment dropdown is now populated for project-wide checklists ([#44](https://github.com/MDRSolutions/Refined-Checklist/issues/44))
 
 ## [1.0.13] - 2026-07-23
@@ -115,7 +121,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - Progress tracking with dynamic progress bar
 - Per-item accountability with user name and timestamp
 
-[Unreleased]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.14...HEAD
+[Unreleased]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.15...HEAD
+[1.0.15]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.14...v1.0.15
 [1.0.14]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.13...v1.0.14
 [1.0.13]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.12...v1.0.13
 [1.0.12]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.11...v1.0.12
@@ -128,4 +135,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 [1.0.4]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.1...v1.0.2
-[1.0.1]: https://github.com/MDRSolutions/Refined-Checklist-docs/releases/tag/v1.0.1
+[1.0.1]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.0...v1.0.1
