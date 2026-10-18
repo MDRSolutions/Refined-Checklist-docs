@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+## [1.0.16] - 2026-10-18
+
+### Added
+
+- Organization-wide checklists — define checklists once at the organization level and reuse them across every project ([#48](https://github.com/MDRSolutions/Refined-Checklist/issues/48))
+
+### Changed
+
+- Organization-wide checklists are shown in a separate, labelled group on the work item form, after project-wide checklists
+- Settings pages determine their configuration scope from the hosting hub and guard against accidental cross-scope saves
+
+### Fixed
+
+- State gates that reference a deleted organization-wide checklist now block the transition with a clear message and the project settings page offers to remove stale references
+
 ## [1.0.15] - 2026-10-17
 
 ### Fixed
