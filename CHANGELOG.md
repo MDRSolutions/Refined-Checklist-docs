@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+## [1.0.17] - 2026-11-21
+
+### Fixed
+
+- Organization-wide checklists can now have **Visible States**, **Completion Field**, and **Disable Conditions** configured per project ([#51](https://github.com/MDRSolutions/Refined-Checklist/issues/51))
+- Completion Field dropdown lists all custom Boolean fields and explains when none are available, instead of showing only **None (disabled)**
+- Mapped completion field no longer toggles to `false` when navigating away from and back to the checklist page while the checklist remains 100% complete ([#52](https://github.com/MDRSolutions/Refined-Checklist/issues/52))
+
+### Changed
+
+- In project settings, organization-wide checklists appear in the **Select Type** tree with a lock icon and count badge; their name, items, guidance, assignments, N/A sorting, and user-defined item options remain read-only and are managed in **Organization Settings**
+
 ## [1.0.16] - 2026-10-18
 
 ### Added
@@ -136,7 +148,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - Progress tracking with dynamic progress bar
 - Per-item accountability with user name and timestamp
 
-[Unreleased]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.15...HEAD
+[Unreleased]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.17...HEAD
+[1.0.17]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.16...v1.0.17
 [1.0.15]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.14...v1.0.15
 [1.0.14]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.13...v1.0.14
 [1.0.13]: https://github.com/MDRSolutions/Refined-Checklist-docs/compare/v1.0.12...v1.0.13

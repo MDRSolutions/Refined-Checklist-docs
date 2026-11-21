@@ -1,6 +1,6 @@
 # Refined Checklist
 
-**MDR Solutions - Version 1.0.16**
+**MDR Solutions - Version 1.0.17**
 
 The **Refined Checklist** extension is a lightweight, highly configurable way to add checklists, "Definition of Done," or task-tracking directly into your Azure DevOps work item forms. It supports multiple named checklists per work item type, custom titles, reorderable items, and "Not Applicable" (N/A) status tracking, making it an essential tool for maintaining high standards and consistency across your projects.
 
@@ -155,7 +155,7 @@ Disable conditions allow you to hide checklists based on the value of a drop-dow
 
 <a id="organization-wide-checklists-config"></a>
 
-Organization-wide checklists let you define a checklist once and have it apply to every project in your organization — ideal for shared Security criteria or a common "Definition of Done." Unlike project checklists, they are managed centrally and cannot be edited from a project's settings.
+Organization-wide checklists let you define a checklist once and have it apply to every project in your organization — ideal for shared Security criteria or a common "Definition of Done." Checklist items, guidance, assignments, N/A sorting, and user-defined items are managed centrally in **Organization Settings**. Three settings — [Visible States](#visible-states), [Completion Field](#completion-field) mapping, and [Disable Conditions](#disable-conditions) — can be configured per project from **Project Settings**.
 
 #### A. Managing organization-wide checklists
 
@@ -163,15 +163,15 @@ Organization-wide checklists let you define a checklist once and have it apply t
 2.  In the left sidebar, under **Extensions**, click **Checklist Configuration (Org)**.
 3.  Select a **Work Item Type** from the tree view, then add and edit checklists as described in [Template Configuration](#3-template-configuration).
 
-Organization-wide checklists support the same item, guidance, assignment, N/A sorting, and user-defined item options as project checklists.
+Checklist items, guidance, assignments, N/A sorting, and user-defined items are managed centrally in Organization Settings and are read-only when viewed from project settings.
 
 #### B. Using them in a project
 
 -   Organization-wide checklists automatically appear on work items in every project.
--   In **Project Settings** > **Checklist Configuration**, organization-wide checklists are listed in a read-only **Organization-wide (read-only)** section. They cannot be edited or deleted from a project — edit them in **Organization Settings** instead.
+-   In **Project Settings** > **Checklist Configuration**, organization-wide checklists appear in the **Select Type** tree under each work item type with a lock icon (and a 🔒 N count badge on the type). Select one to configure its per-project settings. Checklist items, guidance, assignments, N/A sorting, and user-defined items are read-only — edit them in **Organization Settings** instead.
 -   You can include organization-wide checklists in a project's [State Transition Gates](#state-transition-gates). They are shown with a lock icon in the gate list.
 
-> **Note:** Team visibility, [Visible States](#visible-states), [Completion Field](#completion-field) mapping, and [Disable Conditions](#disable-conditions) are project-specific. These settings are configured per project and are not available for organization-wide checklists.
+> **Note:** [Visible States](#visible-states), [Completion Field](#completion-field) mapping, and [Disable Conditions](#disable-conditions) are configured per project and apply only to that project. Team visibility remains project-only and is not available for organization-wide checklists.
 
 #### C. Limitations and things to know
 
