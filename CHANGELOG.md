@@ -6,12 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
-## [1.0.17] - 2026-11-20
+## [1.0.17] - 2026-11-21
 
 ### Fixed
 
 - Organization-wide checklists can now have **Visible States**, **Completion Field**, and **Disable Conditions** configured per project ([#51](https://github.com/MDRSolutions/Refined-Checklist/issues/51))
 - Completion Field dropdown lists all custom Boolean fields and explains when none are available, instead of showing only **None (disabled)**
+- Mapped completion field no longer toggles to `false` when navigating away from and back to the checklist page while the checklist remains 100% complete ([#52](https://github.com/MDRSolutions/Refined-Checklist/issues/52))
 
 ### Changed
 
